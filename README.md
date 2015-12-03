@@ -18,7 +18,7 @@ following:
   by attempting to return the count of instances available to the account,
   even if there are non.
 
-###  # Display help/usage
+###  Display help/usage
 
 ```
 gem install bundler
@@ -37,15 +37,12 @@ bundle exec ./aws_simple_connect.rb -a <Your AWS account access key id> -s <Your
 ## simple_query_script.rb
 ---------------------
 
-  Is a simple ruby script that will all the AWS account to be:
-  ### queried
-  #### for instances
-  #### and security_groups
+  Is a simple ruby script that will access the AWS account to:
+  * query instances
+  * query security_groups
+  * perform actions on instances
 
-  ### perform actions on instances
-  
-
-###  # Display help/usage
+###  Display help/usage
 
 ```
 gem install bundler
