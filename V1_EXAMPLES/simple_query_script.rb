@@ -20,17 +20,17 @@ class MyAws
     @verbose           = opt[:verbose]
     @match             = opt[:match]
 
-    credentials = {:access_key_id     => access_key_id,
+    config_args = {:access_key_id     => access_key_id,
                    :secret_access_key => secret_access_key,
                    :region            => region}
 
     if verbose
-      credentials[:log_level]       = :debug
-      credentials[:logger]          = Logger.new($stdout)
-      credentials[:http_wire_trace] = true
+      config_args[:log_level]       = :debug
+      config_args[:logger]          = Logger.new($stdout)
+      config_args[:http_wire_trace] = true
     end
 
-    AWS.config(credentials)
+    AWS.config(config_args)
   end
 
   def loop_instances
@@ -185,6 +185,7 @@ class MyAws
     puts "virtualization_type   #{instance.virtualization_type}\n\n"
   end
 end
+
 def stupid_simple_get_opts
   args = Trollop::options do
     opt :access_key_id,      "AWS account access key id",                        :type => :string
@@ -214,4 +215,3 @@ if opts[:instance_action_given]
   my_aws.reboot_instance       if opts[:instance_action] == "reboot"
   my_aws.terminate_instance    if opts[:instance_action] == "terminate"
 end
-
